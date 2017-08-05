@@ -21,12 +21,11 @@ def bright(msg):
 def find_prefix_match(prefix, choices, start_index = 0):
     """Return index of element in 'choices' that starts with 'prefix'.
 
-    prefix  the prefix string to search for
-    choices  list of choces strings
+    prefix       the prefix string to search for
+    choices      list of choces strings
     start_index  the index to start searching 'choices' at
 
-    Returns an index into 'choices' of unique find.  Returns None
-    if no or more than one match found.
+    Returns an index into 'choices' of unique find.  Returns None if no match found.
     """
 
     for (i, c) in enumerate(choices[start_index:]):
@@ -66,13 +65,13 @@ def get_choice(choices, header=None, prompt=None):
             num_ans = int(ans_lower)
         except ValueError:
             # not numeric, look for choice starting with 'ans_lower'
-            ndx = find_prefix_match(ans_lower, choices)
+            ndx = find_prefix_match(ans_lower, new_choices)
             if ndx is None:
                 # error, NO match
                 error = "Sorry, '%s' doesn't match a choice." % ans
                 continue
             else:
-                if find_prefix_match(ans_lower, choices, ndx+1):
+                if find_prefix_match(ans_lower, new_choices, ndx+1):
                     error = "Sorry, '%s' matches more than one choice." % ans
                     continue
                 return choices[ndx]
@@ -86,6 +85,6 @@ def get_choice(choices, header=None, prompt=None):
 
 
 
-choice = get_choice(['alpha', 'beta', 'gamma', 'delta', 'epsilon', 'alphabet', 'dog', 'grouse'],
-                    'A longer header string', 'Enter response: ')
+choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'alphABET', 'dog', 'grouse'],
+                    'A longer header string', 'Enter choice: ')
 print('choice=%s' % choice)
