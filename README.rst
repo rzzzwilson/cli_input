@@ -2,11 +2,11 @@ cli_input - Getting User Input
 ==============================
 
 Often our code wants to get textual input from a user.  Sure, GUIs are nice, but
-they take a lot of work to set up.  Often we just want a sinple script that
+they take a lot of work to set up.  Often we just want a simple script that
 prompts the user for input.  Maybe even something as simple as selecting an
 option from a menu.
 
-The code here is an atempt to make this process less painful for the end-user.
+The code here is an attempt to make this process less painful for the end-user.
 
 Use Case
 --------
@@ -15,7 +15,7 @@ Often text systems ask users for input with this sort of prompt::
 
     Enter the smoothing function (None, Adaptive or Exponential):
 
-It's a pain for the user to type in `Adaptive`, for example, and we usually allow
+It's a pain for the user to type in 'Adaptive', for example, and we usually allow
 the user to type the first character with case being ignored.  But what if the
 choices are *many* and the first letter isn't enough?  It would be nice if we let
 the user enter as many characters **as necessary** to make the selection.  So a 
