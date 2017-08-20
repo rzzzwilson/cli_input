@@ -51,9 +51,16 @@ Note that the numeric values are added by the code.
 The line asking for the user to enter a choice ('Select the smoothing algorithm
 to use:') is called the **prompt**.
 
-So the function that implements the example above would look like::
+So the code that presents a menu like that shown above would look like::
 
-    choice = get_choice(choices, header=None, prompt=None)
+    choice = get_choice(choices=['Adaptive smoothing', 'Butterworth filter',
+                                 'Kalman filter', 'Kernel smoother',
+                                 'Kolmogorov–Zurbenko filter',
+                                 'Laplacian smoothing', 'Local regression',
+                                 'Low-pass filter'],
+                        header='Smoothing',
+                        prompt='Select the smoothing algorithm to use: ')
+
 
 where **choices** is a list of strings.  The **header** and **prompt** parameters
 may be omitted.
