@@ -65,6 +65,6 @@ So the code that presents a menu like that shown above would look like::
 where **choices** is a list of strings.  The **header** and **prompt** parameters
 may be omitted.
 
-When executed, tha above code allows the user to enter any digit in the range
+When executed, the above code allows the user to enter any digit in the range
 *[1, 8]* or a string that uniquely selects one menu item, such as "a", "Ka" or
 "low".
