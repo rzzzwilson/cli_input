@@ -1,15 +1,15 @@
 #!/bin/env python3
 
 """
-Implement a method of getting a choice from a user.
+Implement a method of getting a choice from a user using a simpe menu.
 """
 
 def clear():
     """Clear the screen."""
 
     print('\n'*60)
-    #print("\033[2J")
-    #print('\033[50;0H')
+#    print("\033[2J")
+#    print('\033[50;0H')
 
 def bright(msg):
     """Print some text in 'bright'."""
@@ -82,8 +82,7 @@ def get_choice(choices, header=None, prompt=None):
             return choices[num_ans - 1]
 
 
-
-
-choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'alphABET', 'dog', 'grouse'],
-                    'A longer header string', 'Enter choice: ')
-print('choice=%s' % choice)
+if __name__ == '__main__':
+    choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'alphABET', 'dog', 'grouse'],
+                        'A longer header string', 'Enter choice: ')
+    print('choice=%s' % choice)

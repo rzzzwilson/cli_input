@@ -24,12 +24,9 @@ def find_prefix_match(prefix, choices, start_index=0):
     if no or more than one match found.
     """
 
-    print("find_prefix_match: prefix='%s', choices=%s, start_index=%s" % (str(prefix), str(choices), str(start_index)))
     for (i, c) in enumerate(choices[start_index:]):
         if c.startswith(prefix):
-            print("find_prefix_match: returning %d" % (i + start_index))
             return i + start_index
-    print("find_prefix_match: returning None")
     return None
 
 def get_choice(choices, prompt=None):
@@ -79,7 +76,6 @@ def get_choice(choices, prompt=None):
             return choices[num_ans - 1]
 
 
-
-
-choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'alphABET'], 'Enter choice: ')
-print('choice=%s' % choice)
+if __name__ == '__main__':
+    choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'beat', 'deal'], 'Enter choice: ')
+    print('choice=%s' % choice)
