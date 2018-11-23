@@ -18,7 +18,7 @@ Often text systems ask users for input with this sort of prompt::
 It's a pain for the user to type in 'Adaptive', for example, and we usually allow
 the user to type the first character with case being ignored.  But what if the
 choices are *many* and the first letter isn't enough?  It would be nice if we let
-the user enter as many characters **as necessary** to make the selection.  So a 
+the user enter as many characters **as necessary** to make the selection.  So a
 menu prompt might look like this::
 
     Smoothing
@@ -31,7 +31,7 @@ menu prompt might look like this::
     7. Local regression
     8. Low-pass filter
 
-    Select the smoothing algorithm to use: 
+    Select the smoothing algorithm to use:
 
 Note that a single letter is not enough: 'k' could be one of three choices.  We
 want a system that would allow the user to enter a *number* or a string that
