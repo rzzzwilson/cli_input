@@ -1,17 +1,20 @@
-#!/bin/env python3
-
 """
 Implement a method of getting a choice from a user.
 """
+
+import os
+import sys
 
 
 def clear():
     """Clear the screen."""
 
-    print('\n'*2)
-    #print('\n'*60)
-    #print("\033[2J")
-    #print('\033[50;0H')
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')
+#    print('\n'*60)
+##    print("\033[2J")
 
 def find_prefix_match(prefix, choices, start_index=0):
     """Return index of element in 'choices' that starts with 'prefix'.

@@ -1,21 +1,26 @@
-#!/bin/env python3
-
 """
 Implement a method of getting a choice from a user using a simpe menu.
 """
 
+import os
+import sys
+
+
 def clear():
     """Clear the screen."""
 
-    print('\n'*60)
-#    print("\033[2J")
-#    print('\033[50;0H')
+    if sys.platform == 'win32':
+        os.system('cls')
+    else:
+        os.system('clear')
+#    print('\n'*60)
+##    print("\033[2J")
 
 def bright(msg):
     """Print some text in 'bright'."""
 
-#    print("\033[1;37;40m%s\033[0;37;40m" % msg)
-    print(msg)
+    print(f'\033[1m{msg}\033[0m')
+#    print(msg)
 
 def find_prefix_match(prefix, choices, start_index = 0):
     """Return index of element in 'choices' that starts with 'prefix'.
