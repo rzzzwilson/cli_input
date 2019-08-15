@@ -1,26 +1,26 @@
 """
-Implement a method of getting a choice from a user using a simpe menu.
+Implement a method of getting a choice from a user using a simple menu.
 """
 
 import os
 import sys
 
 
+WIN32 = sys.platform == 'win32'
+
+
 def clear():
     """Clear the screen."""
 
-    if sys.platform == 'win32':
+    if WIN32:
         os.system('cls')
     else:
         os.system('clear')
-#    print('\n'*60)
-##    print("\033[2J")
 
 def bright(msg):
     """Print some text in 'bright'."""
 
     print(f'\033[1m{msg}\033[0m')
-#    print(msg)
 
 def find_prefix_match(prefix, choices, start_index = 0):
     """Return index of element in 'choices' that starts with 'prefix'.
@@ -49,19 +49,23 @@ def get_choice(choices, header=None, prompt=None):
     new_choices = [c.lower() for c in choices]
 
     # present menu
-    error = None
+    error = ''      # holds error message (if any)
     while True:
         # present the menu
         clear()
-        if error:
-            print(error + '\n')
-            error = None
         bright(header)
         print()
         for (i, c) in enumerate(choices):
             print('%2d. %s' % (i + 1, c))
         print()
+        if error:
+            print(error)
+            print()
+            error = ''
         ans = input(prompt)
+        if not ans:
+            # no input, just represent the menu
+            continue
 
         # check response
         ans_lower = ans.lower()

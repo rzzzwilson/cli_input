@@ -6,15 +6,16 @@ import os
 import sys
 
 
+WIN32 = sys.platform == 'win32'
+
+
 def clear():
     """Clear the screen."""
 
-    if sys.platform == 'win32':
+    if WIN32:
         os.system('cls')
     else:
         os.system('clear')
-#    print('\n'*60)
-##    print("\033[2J")
 
 def find_prefix_match(prefix, choices, start_index=0):
     """Return index of element in 'choices' that starts with 'prefix'.
@@ -46,14 +47,16 @@ def get_choice(choices, prompt=None):
     prompt = '[%s]  %s' % (', '.join(choices), prompt)
 
     # present menu
-    error = None
+    error = ''      # holds error message (if any)
     while True:
         # present the prompt
         clear()
         if error:
-            print(error + '\n\n')
-            error = None
+            print(error + '\n')
+            error = ''
         ans = input(prompt)
+        if not ans:
+            continue    # ignore empty inputs
 
         # check response
         ans_lower = ans.lower()
