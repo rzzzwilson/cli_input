@@ -22,6 +22,7 @@ the user enter as many characters **as necessary** to make the selection.  So a
 menu prompt might look like this::
 
     Smoothing
+
     1. Adaptive smoothing
     2. Butterworth filter
     3. Kalman filter
@@ -68,3 +69,9 @@ may be omitted.
 When executed, the above code allows the user to enter any digit in the range
 *[1, 8]* or a string that uniquely selects one menu item, such as "a", "Ka" or
 "low".
+
+File here
+---------
+
+The python files here are all self-contained and can be imported to use the code
+or you can execute each file to get a simple demonstration.

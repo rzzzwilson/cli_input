@@ -40,6 +40,10 @@ def get_choice(choices, prompt=None):
     prompt   the prompt string
     """
 
+    # check prompt supplied
+    if prompt is None:
+        prompt = 'Enter choice: '
+
     # make sure we have all-lowercase choice strings
     new_choices = [c.lower() for c in choices]
 
@@ -83,5 +87,5 @@ def get_choice(choices, prompt=None):
 
 
 if __name__ == '__main__':
-    choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'beat', 'deal'], 'Enter choice: ')
+    choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'beat', 'deal'], 'Pick one: ')
     print('choice=%s' % choice)

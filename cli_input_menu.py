@@ -53,7 +53,8 @@ def get_choice(choices, header=None, prompt=None):
     while True:
         # present the menu
         clear()
-        bright(header)
+        if header:
+            bright(header)
         print()
         for (i, c) in enumerate(choices):
             print('%2d. %s' % (i + 1, c))
