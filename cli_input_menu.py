@@ -117,6 +117,6 @@ def get_choice(choices, header=None, prompt=None):
 
 if __name__ == '__main__':
     choices = ['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'alphABET', 'dog', 'grouse']
-#    choice = get_choice(choices, 'A longer header string', 'Enter choice: ')
-    choice = get_choice(choices)
+    choice = get_choice(choices, 'A longer header string', 'Enter choice: ')
+#    choice = get_choice(choices)
     print('choice=%s' % choice)
