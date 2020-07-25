@@ -1,5 +1,15 @@
 """
 Implement a method of getting a choice from a user.
+
+Allows user to enter either a numeric choice or to provide enough input to
+identify the desired choice.
+
+Usage:  choice = get_choice(choices, prompt=None):
+
+where  choices  is a list of choice strings
+       prompt   the prompt string that asks for a choice
+
+The returned value is the complete string from 'choices' that the user chose.
 """
 
 import os
@@ -10,7 +20,10 @@ WIN32 = sys.platform == 'win32'
 
 
 def clear():
-    """Clear the screen."""
+    """Clear the screen.
+
+    Should work on multiple operating systems.
+    """
 
     if WIN32:
         os.system('cls')
@@ -24,8 +37,8 @@ def find_prefix_match(prefix, choices, start_index=0):
     choices      list of choces strings
     start_index  the index to start searching 'choices' at
 
-    Returns an index into 'choices' of unique find.  Returns None
-    if no or more than one match found.
+    Returns an index into 'choices' of unique find.
+    Returns 'None' if no match found.
     """
 
     for (i, c) in enumerate(choices[start_index:]):
@@ -80,10 +93,9 @@ def get_choice(choices, prompt=None):
                 return choices[ndx]
         else:       # no exception
             # if we get here, 'num_ans' is numeric choice
-            if not 0 < num_ans <= len(new_choices):
-                error = "Sorry, numeric response '%s' was out of range." % ans
-                continue
-            return choices[num_ans - 1]
+            if 0 < num_ans <= len(new_choices):
+                return choices[num_ans - 1]
+            error = "Sorry, numeric response '%s' was out of range." % ans
 
 
 if __name__ == '__main__':

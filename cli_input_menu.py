@@ -1,5 +1,16 @@
 """
 Implement a method of getting a choice from a user using a simple menu.
+
+Uses the entire screen for the menu.  Allows user to enter either a numeric
+choice or to provide enough input to identify the desired choice.
+
+Usage:  choice = get_choice(choices, header=None, prompt=None)
+
+where  choices  is a list of choice strings
+       header   the top header line for the menu
+       prompt   the prompt string that asks for a choice
+
+The returned value is the complete string from 'choices' that the user chose.
 """
 
 import os
@@ -10,7 +21,10 @@ WIN32 = sys.platform == 'win32'
 
 
 def clear():
-    """Clear the screen."""
+    """Clear the screen.
+
+    Should work on multiple operating systems.
+    """
 
     if WIN32:
         os.system('cls')
@@ -18,7 +32,10 @@ def clear():
         os.system('clear')
 
 def bright(msg):
-    """Print some text in 'bright'."""
+    """Print some text in 'bright'.
+
+    This is potentially not portable.
+    """
 
     print(f'\033[1m{msg}\033[0m')
 
@@ -29,7 +46,8 @@ def find_prefix_match(prefix, choices, start_index = 0):
     choices      list of choces strings
     start_index  the index to start searching 'choices' at
 
-    Returns an index into 'choices' of unique find.  Returns None if no match found.
+    Returns an index into 'choices' of unique find.
+    Returns 'None' if no match found.
     """
 
     for (i, c) in enumerate(choices[start_index:]):
@@ -43,7 +61,13 @@ def get_choice(choices, header=None, prompt=None):
     choices  a list of choice strings
     header   the header string
     prompt   the prompt string
+
+    Returns the complete string from 'choices' that the user chose.
     """
+
+    # check prompt supplied
+    if prompt is None:
+        prompt = 'Enter choice: '
 
     # make sure we have all-lowercase choice strings
     new_choices = [c.lower() for c in choices]
@@ -86,13 +110,13 @@ def get_choice(choices, header=None, prompt=None):
                 return choices[ndx]
         else:       # no exception
             # if we get here, 'num_ans' is numeric choice
-            if not 0 < num_ans <= len(new_choices):
-                error = "Sorry, numeric response '%s' was out of range." % ans
-                continue
-            return choices[num_ans - 1]
+            if 0 < num_ans <= len(new_choices):
+                return choices[num_ans - 1]
+            error = "Sorry, numeric response '%s' was out of range." % ans
 
 
 if __name__ == '__main__':
     choices = ['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'alphABET', 'dog', 'grouse']
-    choice = get_choice(choices, 'A longer header string', 'Enter choice: ')
+#    choice = get_choice(choices, 'A longer header string', 'Enter choice: ')
+    choice = get_choice(choices)
     print('choice=%s' % choice)
