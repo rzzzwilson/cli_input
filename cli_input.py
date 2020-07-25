@@ -87,5 +87,6 @@ def get_choice(choices, prompt=None):
 
 
 if __name__ == '__main__':
-    choice = get_choice(['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'beat', 'deal'], 'Pick one: ')
+    choices = ['Alpha', 'beta', 'gamma', 'Delta', 'epsilon', 'beat', 'deal']
+    choice = get_choice(choices, 'Pick one: ')
     print('choice=%s' % choice)
